@@ -14,8 +14,8 @@ public class Main {
             System.out.println("Exception caught: " + e.getMessage());
         }
 
-        sale.addProduct(new Product("T-shirt", 9.99));
-        sale.addProduct(new Product("Pants", 19.99));
+        sale.getProducts().add(new Product("T-shirt", 9.99));
+        sale.getProducts().add(new Product("Pants", 19.99));
 
         try {
             sale.calculateTotal();

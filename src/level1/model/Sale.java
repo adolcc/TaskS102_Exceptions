@@ -11,17 +11,20 @@ public class Sale {
         totalPrice = 0.0;
     }
 
-    public void addProduct(Product product) {
-        products.add(product);
+    public ArrayList<Product> getProducts() {
+        return products;
     }
+
 
     public void calculateTotal() throws EmptySaleException {
         if (products.isEmpty()) {
+
             throw new EmptySaleException("To make a sale you must add products first");
         }
 
         totalPrice = 0.0;
         for (Product p : products) {
+
             totalPrice += p.getPrice();
         }
 

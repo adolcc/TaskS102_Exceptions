@@ -1,55 +1,66 @@
 package level2.model;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
     private static final Scanner sc = new Scanner(System.in);
 
-    public static byte readByte(String message) {
+
+    private static String readNonEmptyLine(String message) {
         while (true) {
             System.out.print(message + ": ");
+            String input = sc.nextLine();
+            if (input.trim().isEmpty()) {
+                System.out.println("Error: This field cannot be empty.");
+            } else {
+                return input;
+            }
+        }
+    }
+
+    public static byte readByte(String message) {
+        while (true) {
             try {
-                return sc.nextByte();
-            } catch (InputMismatchException e) {
+                String input = readNonEmptyLine(message);
+                return Byte.parseByte(input);
+            } catch (NumberFormatException e) {
                 System.out.println("Invalid format. Please enter a valid byte number.");
-                sc.nextLine();
             }
         }
     }
 
     public static int readInt(String message) {
         while (true) {
-            System.out.print(message + ": ");
             try {
-                return sc.nextInt();
-            } catch (InputMismatchException e) {
+                String input = readNonEmptyLine(message);
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
                 System.out.println("Invalid format. Please enter a valid integer.");
-                sc.nextLine();
             }
         }
     }
 
     public static float readFloat(String message) {
         while (true) {
-            System.out.print(message + ": ");
             try {
-                return sc.nextFloat();
-            } catch (InputMismatchException e) {
+                String input = readNonEmptyLine(message);
+
+                input = input.replace(',', '.');
+                return Float.parseFloat(input);
+            } catch (NumberFormatException e) {
                 System.out.println("Invalid format. Use a comma instead of a dot (e.g. 3,14).");
-                sc.nextLine();
             }
         }
     }
 
     public static double readDouble(String message) {
         while (true) {
-            System.out.print(message + ": ");
             try {
-                return sc.nextDouble();
-            } catch (InputMismatchException e) {
+                String input = readNonEmptyLine(message);
+                input = input.replace(',', '.');
+                return Double.parseDouble(input);
+            } catch (NumberFormatException e) {
                 System.out.println("Invalid format. Use a comma instead of a dot (e.g. 3,14).");
-                sc.nextLine();
             }
         }
     }
@@ -101,5 +112,6 @@ public class Input {
             }
         }
     }
+
 }
 
