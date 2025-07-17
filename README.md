@@ -20,7 +20,7 @@ Classmates, YouTube tutorials, Google searches Owen (AI assistant) Previous assi
 
 ---
 
-Technologies Used
+**Technologies Used**
 
 Java 21 IntelliJ IDEA Online documentation and tutorials
 
